@@ -15,14 +15,15 @@ const {data, error, loading} = useContext(NewsContext)
 
 
 
-  if (loading) return <p>LOADING</p>
-  if (error) return <p>ERROR</p>
+ 
+  if (error) return <p>{error.message}</p>
 
   return (
     <>
       <StickyNavbar />
       <div className='mt-4'>
-        {isNews && newsHandling(data).map((data) => (
+        {loading && <p>Loading...</p> }
+        {(isNews && !loading) && newsHandling(data).map((data) => (
           <BlogCard key={data.id} data={data} />
         ))}
       </div>
