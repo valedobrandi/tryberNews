@@ -15,7 +15,7 @@ type BlogCardProps = {
 
 export default function BlogCard({ data }: BlogCardProps) {
   const { titulo, imagens, data_publicacao, introducao, link } = data
-  const img = JSON.parse(imagens)
+  const img = imagens? JSON.parse(imagens) : ""
 
 
 
