@@ -4,10 +4,15 @@ import useFetch from "../Hooks/useFetch";
 import { UseFechType } from "../types/useFetch";
 import { NewsContext } from "../Context/NewsContext";
 import { newsHandling } from "../utils/newsHandling";
+import useLocalStorage from "../Hooks/useLocalStorage";
+import { ItemsType } from "../types/news";
+
 
 export default function NewsProvider({ children }: NewsProviderType) {
+  const {setStorage, store} = useLocalStorage<ItemsType[]>("favoriteNews", [])
+
   const [fetcher, setFetcher] = useState(
-    'https://servicodados.ibge.gov.br/api/v3/noticias/?qtd=100'
+    'https://servicodados.ibge.gov.br/api/v3/noticias/'
   )
   const { data, error, loading } = useFetch(fetcher) as UseFechType
   const isNews = data && "items" in data
@@ -20,7 +25,7 @@ export default function NewsProvider({ children }: NewsProviderType) {
         setFetcher(`https://servicodados.ibge.gov.br/api/v3/noticias/?busca=${input}`);
         break;
       case "all":
-        setFetcher('https://servicodados.ibge.gov.br/api/v3/noticias/?qtd=100');
+        setFetcher('https://servicodados.ibge.gov.br/api/v3/noticias/');
         break;
       default:
         break;
@@ -33,7 +38,7 @@ export default function NewsProvider({ children }: NewsProviderType) {
 
   return (
     <NewsContext.Provider
-      value={{ dataNews, error, loading, onSetFetcher }}
+      value={{ dataNews, error, loading, onSetFetcher, setStorage,  store}}
     >
       {children}
     </NewsContext.Provider>
