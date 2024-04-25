@@ -4,20 +4,27 @@ import {
   CardBody,
   CardFooter,
   Typography,
-  Avatar,
-  Tooltip,
+  IconButton,
 } from "@material-tailwind/react";
 import { ItemsType } from "../types/news";
+import { useContext } from "react";
+import { NewsContext } from "../Context/NewsContext";
 
 type BlogCardProps = {
   data: ItemsType
 }
 
 export default function BlogCard({ data }: BlogCardProps) {
-  const { titulo, imagens, data_publicacao, introducao, link } = data
-  const img = imagens? JSON.parse(imagens) : ""
+  const {setStorage, store} = useContext(NewsContext)
+  const { titulo, imagens, data_publicacao, introducao, link, id } = data
+  const img = imagens ? JSON.parse(imagens) : ""
 
+  const isFavorite = store.find((fav) => fav.id === id)
 
+  const handleFavorite = () => {
+    if (isFavorite) {return setStorage(store.filter((fav) => fav.id !== id))}
+    setStorage([...store, data])
+  }
 
   return (
     <Card className="max-w-[54rem] overflow-hidden m-auto mb-7">
@@ -45,24 +52,11 @@ export default function BlogCard({ data }: BlogCardProps) {
       </CardBody>
       <CardFooter className="flex items-center justify-between">
         <div className="flex items-center -space-x-3">
-          <Tooltip content="Natali Craig">
-            <Avatar
-              size="sm"
-              variant="circular"
-              alt="natali craig"
-              src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1061&q=80"
-              className="border-2 border-white hover:z-10"
-            />
-          </Tooltip>
-          <Tooltip content="Tania Andrew">
-            <Avatar
-              size="sm"
-              variant="circular"
-              alt="tania andrew"
-              src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
-              className="border-2 border-white hover:z-10"
-            />
-          </Tooltip>
+          <IconButton
+          onClick={handleFavorite}
+          className="bg-transparent text-3xl">
+          {isFavorite ? `❤️️` : `🖤`}
+          </IconButton>
         </div>
         <Typography className="font-normal">published {data_publicacao} ago</Typography>
       </CardFooter>
