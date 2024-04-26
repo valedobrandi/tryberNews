@@ -7,8 +7,13 @@ export default function SearchBar() {
   const [search, setSearch] = useState("")
   const searchRef = useRef<string | null>(null)
 
-  const handleSearch = () => (onSetFetcher(search, 'search'), searchRef.current = `${search}`, setSearch(""));
-  const handleRemoveSearch = () => (searchRef.current = null, onSetFetcher(search, 'all'));
+  const handleSearch = () => {
+    onSetFetcher();
+    searchRef.current = `${search}`;
+    setSearch("")};
+
+  const handleRemoveSearch = () => (searchRef.current = null, onSetFetcher());
+
   return (
     <div className="items-center gap-x-2 flex justify-center">
       <div className="relative flex items-center gap-2 w-[600px]">

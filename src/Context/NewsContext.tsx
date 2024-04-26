@@ -6,9 +6,10 @@ type NewsContextProps = {
     dataNews: ItemsType[] | undefined;
     error: Error;
     loading: boolean;
-    onSetFetcher: (input: string, mode: string) => void;
+    onSetFetcher: () => void;
     setStorage: (value: ItemsType[]) => void;
-    store: ItemsType[]
+    store: ItemsType[];
+    handleDate: (date: Date, dateRange:string) => void
 }
 
 export const NewsContext = createContext({} as NewsContextProps);

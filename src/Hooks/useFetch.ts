@@ -6,26 +6,17 @@ function useFetch(url:string) {
   const [error, SetError] = useState<Error>();
   const [loading, setLoading] = useState(true);
   
+ console.log(url);
  
-  
-  const queryParams = {
-    qtd: '20',
-    page: '1',
-    de: '',
-    ate: '',
-  };
-  
-  const queryString = new URLSearchParams(queryParams).toString();
-  const fullUrl = `${url}?${queryString}`;
 
  useEffect(() => {
    const fetchData = async () => {
      setLoading(true);
      try {
-       const request = await fetch(fullUrl);
-        const response = await request.json();
-     
-           
+       const request = await fetch(url);
+      const response = await request.json();
+        console.log(response);
+        
         setData(response);
       } catch (err) {
         if (err instanceof Error) SetError(err);
@@ -36,7 +27,7 @@ function useFetch(url:string) {
     fetchData()
   },[url])
 
-  return { data, error, loading, setData };
+  return { data, error, loading };
 }
 
 export default useFetch;
