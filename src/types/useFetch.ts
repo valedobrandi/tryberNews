@@ -4,4 +4,5 @@ export type UseFechType = {
     data: NewsType | undefined;
     error: Error;
     loading: boolean;
+    
   }
