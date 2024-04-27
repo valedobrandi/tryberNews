@@ -3,10 +3,16 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import SearchBar from "./SearchBar";
- 
-export default function StickyNavbar() {
 
-  
+type StickyNavbarProps = {
+  searchRef: React.MutableRefObject<string | null>;
+  setBtnTag: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+
+export default function StickyNavbar({searchRef, setBtnTag }:StickyNavbarProps) {
+
+
   return (
     <div className="-mb-6 max-h-[768px] w-full overflow-scroll">
       <Navbar className="sticky top-0 z-10 h-max max-w-full
@@ -20,7 +26,7 @@ export default function StickyNavbar() {
             TryberNews
           </Typography>
         </div>
-          <SearchBar />
+        <SearchBar searchRef={searchRef} setBtnTag={setBtnTag}/>
       </Navbar>
     </div>
   );

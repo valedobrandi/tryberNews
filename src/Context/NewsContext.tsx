@@ -9,7 +9,9 @@ type NewsContextProps = {
     onSetFetcher: () => void;
     setStorage: (value: ItemsType[]) => void;
     store: ItemsType[];
-    handleDate: (date: Date, dateRange:string) => void
+    handleDate: (date: string, dateRange: string) => void;
+    toDate: string;
+    fromDate: string;
 }
 
 export const NewsContext = createContext({} as NewsContextProps);

@@ -1,53 +1,45 @@
 import { Button, Input } from "@material-tailwind/react";
-import { useContext, useRef, useState } from "react";
+import { useContext, useState } from "react";
 import { NewsContext } from "../Context/NewsContext";
 
-export default function SearchBar() {
-  const { onSetFetcher } = useContext(NewsContext)
-  const [search, setSearch] = useState("")
-  const searchRef = useRef<string | null>(null)
+type SearchBarProps = {
+  searchRef: React.MutableRefObject<string | null>;
+  setBtnTag: React.Dispatch<React.SetStateAction<boolean>>
+}
 
+export default function SearchBar({searchRef, setBtnTag}: SearchBarProps) {
+  const { onSetFetcher, handleDate } = useContext(NewsContext)
+  const [search, setSearch] = useState("")
+
+  
   const handleSearch = () => {
+    handleDate(search, "busca")
     onSetFetcher();
     searchRef.current = `${search}`;
-    setSearch("")};
+    setSearch("");
+    setBtnTag(true)
+  };
 
-  const handleRemoveSearch = () => (searchRef.current = null, onSetFetcher());
+
 
   return (
     <div className="items-center gap-x-2 flex justify-center">
-      <div className="relative flex items-center gap-2 w-[600px]">
+      <div className="relative flex items-center gap-2 lg:w-[600px] w-[200px] ">
         <Input
-        size={"lg"}
+          className="indent-10 min-w-9"
+          size="lg"
           value={search}
           onChange={({ target }) => setSearch(target.value)}
-          className="flex-1 !border-t-blue-gray-300 pl-9 indent-24 font-extrabold
-           placeholder:text-blue-gray-300 focus:!border-blue-gray-300"
-          type="search"
-          placeholder="Search"
-          containerProps={{
-            className: "min-w-[200px]",
-          }}
-          labelProps={{
-            className: "before:content-none after:content-none",
-          }} crossOrigin={undefined} />
-        <div className="!absolute left-1 text-black">
-          {searchRef.current && (
-          <Button
-           className="rounded-full border-gray-500 text-gray-500 "
-           variant="outlined"
-           size={"sm"}
-           onClick={handleRemoveSearch}>
-          {searchRef.current} <span className="text-red-900">x</span> 
-          </Button>
-        )}
-        </div>
+          variant="standard" 
+          style={{fontSize: "1.5rem"}}
+          crossOrigin={undefined} />
       </div>
       <Button
         onClick={handleSearch}
-        size="md" className="rounded-lg">
+        size="sm" 
+        className="rounded-lg">
         Search
       </Button>
     </div>
   )
-}
+} 
