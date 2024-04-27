@@ -1,19 +1,20 @@
 import { useEffect, useState } from 'react';
+import { QueryParamsSearch } from '../types/queryParams';
 
 
-function useFetch(url:string) {
+function useFetch(url:string, queryParams: QueryParamsSearch ) {
   const [data, setData] = useState();
   const [error, SetError] = useState<Error>();
   const [loading, setLoading] = useState(true);
   
 
+  
  useEffect(() => {
    const fetchData = async () => {
      setLoading(true);
      try {
       const request = await fetch(url);
       const response = await request.json();
-        console.log(response);
         
         setData(response);
       } catch (err) {
@@ -23,7 +24,7 @@ function useFetch(url:string) {
       }
     };
     fetchData()
-  },[url])
+  },[queryParams])
 
   return { data, error, loading };
 }

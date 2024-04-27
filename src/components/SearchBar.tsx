@@ -8,13 +8,12 @@ type SearchBarProps = {
 }
 
 export default function SearchBar({searchRef, setBtnTag}: SearchBarProps) {
-  const { onSetFetcher, handleDate } = useContext(NewsContext)
+  const { handleDate } = useContext(NewsContext)
   const [search, setSearch] = useState("")
 
   
   const handleSearch = () => {
     handleDate(search, "busca")
-    onSetFetcher();
     searchRef.current = `${search}`;
     setSearch("");
     setBtnTag(true)
@@ -24,7 +23,7 @@ export default function SearchBar({searchRef, setBtnTag}: SearchBarProps) {
 
   return (
     <div className="items-center gap-x-2 flex justify-center">
-      <div className="relative flex items-center gap-2 lg:w-[600px] w-[200px] ">
+      <div className="relative flex items-center gap-2 lg:w-[500px] w-[200px] ">
         <Input
           className="indent-10 min-w-9"
           size="lg"
