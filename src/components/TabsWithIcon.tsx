@@ -12,6 +12,7 @@ import {
 } from "@heroicons/react/24/solid";
 import { NewsContext } from "../Context/NewsContext";
 import BlogCard from "./BlogCard";
+import LoadingBar from "./LoadingBar";
 
 
 
@@ -36,7 +37,7 @@ export function TabsWithIcon() {
   if (error) return <p>{error.message}</p>
   return (
     <Tabs value="news">
-      <TabsHeader className="max-w-[700px] mx-auto ">
+      <TabsHeader className="max-w-[700px] mx-auto">
         {dataTab.map(({ label, value, icon }) => (
           <Tab key={value} value={value}>
             <div className="flex items-center gap-2">
@@ -47,6 +48,7 @@ export function TabsWithIcon() {
         ))}
       </TabsHeader>
       <TabsBody>
+        {loading && <LoadingBar />}
         {(dataNews && !loading) && (
           dataTab.map(({desc, value}) => (
             <TabPanel value={value} key={value}>
