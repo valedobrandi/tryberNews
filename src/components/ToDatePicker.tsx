@@ -12,7 +12,7 @@ const { handleDate } = useContext(NewsContext)
     <Datepicker 
     title={dateRangeTitle}
     autoHide={true}
-    onSelectedDateChanged={(date) => handleDate(date, dateRange)} 
+    onSelectedDateChanged={(date) => handleDate(date.toISOString(), dateRange)} 
     className="w-40" />
 )
 }

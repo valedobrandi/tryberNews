@@ -16,7 +16,7 @@ const queryParams = {
 
 export default function NewsProvider({ children }: NewsProviderType) {
   const useQueryParams = useRef(queryParams)
-  
+
   const queryString = new URLSearchParams(useQueryParams.current).toString();
   const url = `https://servicodados.ibge.gov.br/api/v3/noticias/`;
 
@@ -27,10 +27,10 @@ export default function NewsProvider({ children }: NewsProviderType) {
   const { data, error, loading } = useFetch(fetcher) as UseFechType
   const isNews = data && "items" in data
   let dataNews = isNews ? newsHandling(data) : undefined
- 
+
 
   function onSetFetcher() {
-    const queryString = new URLSearchParams(useQueryParams.current).toString();    
+    const queryString = new URLSearchParams(useQueryParams.current).toString();
     setFetcher(`${url}?${queryString}`);
   }
 
@@ -38,16 +38,30 @@ export default function NewsProvider({ children }: NewsProviderType) {
     dataNews = dataNews.slice().sort((a, b) => Number(a.data_publicacao) - Number(b.data_publicacao))
   }
 
-  const handleDate = (byDate: Date, dateRange: string) => {  
-    const changeFormat: string | string[] = byDate.toISOString().slice(0, 10).split("-")
+  const handleDate = (input: string, key: string) => {
+    if (key === "busca") {
+      return useQueryParams.current = { ...useQueryParams.current, [key]: input }
+    }
+    const changeFormat = input.slice(0, 10).split("-")
     const setFormatDate = `${changeFormat[1]}-${changeFormat[2]}-${changeFormat[0]}`
-    useQueryParams.current = {...useQueryParams.current, [dateRange]: setFormatDate}
-  
+    useQueryParams.current = { ...useQueryParams.current, [key]: setFormatDate }
   };
 
+  const toDate = useQueryParams.current.ate
+  const fromDate = useQueryParams.current.de
   return (
     <NewsContext.Provider
-      value={{ dataNews, error, loading, onSetFetcher, setStorage, store, handleDate }}
+      value={{
+        dataNews,
+        error,
+        loading,
+        onSetFetcher,
+        setStorage,
+        store,
+        handleDate,
+        toDate,
+        fromDate,
+      }}
     >
       {children}
     </NewsContext.Provider>

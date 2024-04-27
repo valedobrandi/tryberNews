@@ -9,10 +9,10 @@ export default function FromDatePicker(props: {dateRange:string, dateRangeTitle:
 const { handleDate } = useContext(NewsContext)
 
     return (
-    <Datepicker 
+    <Datepicker
     showClearButton={false}
     title={dateRangeTitle}
-    onSelectedDateChanged={(date) => handleDate(date, dateRange)} 
+    onSelectedDateChanged={(date) => handleDate(date.toISOString(), dateRange)} 
     color={"white"}
     className="w-40" />
 )
