@@ -29,13 +29,12 @@ export default function SearchBar({searchRef, setBtnTag}: SearchBarProps) {
           size="lg"
           value={search}
           onChange={({ target }) => setSearch(target.value)}
-          variant="standard" 
           style={{fontSize: "1.5rem"}}
           crossOrigin={undefined} />
       </div>
       <Button
         onClick={handleSearch}
-        size="sm" 
+        size="lg" 
         className="rounded-lg text-sm">
         Search
       </Button>

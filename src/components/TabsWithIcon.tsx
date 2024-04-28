@@ -13,7 +13,6 @@ import {
 import { NewsContext } from "../Context/NewsContext";
 import BlogCard from "./BlogCard";
 import LoadingBar from "./LoadingBar";
-import { ControlledSelect } from "./ControlledSelect";
 
 
 
@@ -38,7 +37,6 @@ export function TabsWithIcon() {
   if (error) return <p>{error.message}</p>
   return (
     <>
-      <ControlledSelect />
       <Tabs value="news">
         <TabsHeader className="max-w-[700px] mx-auto">
           {dataTab.map(({ label, value, icon }) => (

@@ -8,9 +8,9 @@ export function ControlledSelect() {
 	const { handleNewsUpdate, isQtd } = useContext(NewsContext)
 
 	return (
-		<div className=" max-w-[700px] mx-auto p-4 flex items-center">
+		<div className=" flex items-center mr-2">
 			<ImListNumbered className="w-7 h-7 mr-2" />
-			<div className="w-20 ">
+			<div>
 				<Select
 					value={isQtd}
 					onChange={({ target }) => handleNewsUpdate(target.value, "qtd")}

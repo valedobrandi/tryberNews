@@ -10,7 +10,7 @@ export default withMT({
   theme: {
     extend: {},
     fontFamily: {
-      'sans': ['Roboto', 'ui-sans-serif']
+      'sans': ['ui-sans-serif', 'system-ui', 'Roboto Flex',]
     }
   },
   plugins: [flowbite.plugin(),],

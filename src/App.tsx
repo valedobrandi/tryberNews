@@ -6,9 +6,10 @@ import { TabsWithIcon } from './components/TabsWithIcon';
 import { Badge, Button } from "@material-tailwind/react";
 import { IoMdCloseCircle } from "react-icons/io";
 import SetDatePicker from './components/SetDatePicker';
+import { ControlledSelect } from './components/ControlledSelect';
 
 function App() {
-  const { error, fromDate, toDate, handleNewsUpdate, isSearch} = useContext(NewsContext)
+  const { error, fromDate, toDate, handleNewsUpdate, isSearch } = useContext(NewsContext)
   const [btnTag, setBtnTag] = useState(false)
   const searchRef = useRef<string | null>(null)
 
@@ -30,51 +31,56 @@ function App() {
       <div className='flex mt-6 gap-4 justify-center flex-wrap items-center'>
         <SetDatePicker />
       </div>
-      <div className="max-w-[700px] mx-auto pl-5 min-h-14 flex-wrap sm:max-h-auto flex items-center gap-5 mt-3">
-        {(isSearch !== '' && btnTag) && (
-          <Badge
-            content={<IoMdCloseCircle className="h-4 w-4 text-white" strokeWidth={2.5} />}
-            className="bg-gradient-to-tr from-red-500 to-red-600 border-2
-          border-white shadow-lg shadow-black/20"
-          >
-            <Button
-              size='sm'
-              className='text-sm'
-              onClick={handleRemoveSearch}>
-              {searchRef.current}
-            </Button>
-          </Badge>
+      <div className="max-w-[700px] mx-auto h-20 pl-5 mt-3  lg:flex items-center">
+        <div className='flex'>
+          <ControlledSelect />
+          {(isSearch !== '' && btnTag) && (
+            <Badge
+              content={<IoMdCloseCircle className="h-4 w-4 text-white" strokeWidth={2.5} />}
+              className="bg-gradient-to-tr from-red-500 to-red-600 border-2
+          border-white shadow-lg shadow-black/20 m-2"
+            >
+              <Button
+                size='sm'
+                className='text-sm m-2'
+                onClick={handleRemoveSearch}>
+                {searchRef.current}
+              </Button>
+            </Badge>
           )}
-        {isFromDate && (
-          <Badge
-            content={<IoMdCloseCircle className="h-4 w-4 text-white" strokeWidth={2.5} />}
-            className="bg-gradient-to-tr from-red-500 to-red-600 border-2
-                border-white shadow-lg shadow-black/20"
-          >
-            <Button
-            size='sm'
-              onClick={() => handleNewsUpdate('', 'de')}
-              className="rounded-lg flex justify-center text-sm"
-              color='blue'>
-              {fromDate}
-            </Button>
-          </Badge>)}
-        {isToDate && (
-          <Badge
-            content={<IoMdCloseCircle className="h-4 w-4 text-white" strokeWidth={2.5} />}
-            className="bg-gradient-to-tr from-red-500 to-red-600 border-2
-                border-white shadow-lg shadow-black/20"
-          >
-            <Button
-            size='sm'
+        </div>
+        <div>
+          {isFromDate && (
+            <Badge
+              content={<IoMdCloseCircle className="h-4 w-4 text-white" strokeWidth={2.5} />}
+              className="bg-gradient-to-tr from-red-500 to-red-600 border-2
+                border-white shadow-lg shadow-black/20 m-2"
+            >
+              <Button
+                size='sm'
+                onClick={() => handleNewsUpdate('', 'de')}
+                className="rounded-lg flex justify-center text-sm m-2"
+                color='blue'>
+                {fromDate}
+              </Button>
+            </Badge>)}
+          {isToDate && (
+            <Badge
+              content={<IoMdCloseCircle className="h-4 w-4 text-white" strokeWidth={2.5} />}
+              className="bg-gradient-to-tr from-red-500 to-red-600 border-2
+                border-white shadow-lg shadow-black/20 m-2"
+            >
+              <Button
+                size='sm'
                 onClick={() => handleNewsUpdate('', 'ate')}
-              className="rounded-lg flex justify-center text-sm"
-              color='blue'>
-              {toDate}
-            </Button>
-          </Badge>)}
+                className="rounded-lg flex justify-center text-sm m-2"
+                color='blue'>
+                {toDate}
+              </Button>
+            </Badge>)}
+        </div>
       </div>
-      <div className='mt-1'>
+      <div className='mt-6'>
         <TabsWithIcon />
       </div>
     </>

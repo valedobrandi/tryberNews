@@ -22,7 +22,7 @@ export default function StickyNavbar({searchRef, setBtnTag }:StickyNavbarProps) 
           <Typography
             as="a"
             href="#"
-            className="p-1.5 font-medium flex items-center lg:text-7xl gap-3 text-2x"
+            className="p-1.5 font-medium flex items-center lg:text-7xl gap-3 text-3xl"
           >
             <img src={newsPaper} alt="News Paper" className="w-28 h-28 mr-2" />
             TryberNews
