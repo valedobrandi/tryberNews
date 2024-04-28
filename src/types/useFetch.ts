@@ -1,8 +1,8 @@
-import { NewsType } from "./news";
+import { NewsType } from './news';
 
 export type UseFechType = {
-    data: NewsType | undefined;
-    error: Error;
-    loading: boolean;
-    
-  }
+  data: NewsType | undefined;
+  error: Error;
+  loading: boolean;
+
+};

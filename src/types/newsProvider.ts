@@ -1,4 +1,3 @@
-
 export type NewsProviderType = {
-    children: React.ReactNode;
-  };
+  children: React.ReactNode;
+};

@@ -17,8 +17,7 @@ function useLocalStorage<Type>(key: string, intialState: Type) {
     setStore(intialState);
   };
 
-  return {store, clear, setStorage};
+  return { store, clear, setStorage };
 }
 
 export default useLocalStorage;
-

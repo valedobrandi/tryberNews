@@ -1,29 +1,27 @@
-import { useContext } from "react";
-import { NewsContext } from "../Context/NewsContext";
-import { Datepicker } from "flowbite-react";
-
-
+import { useContext } from 'react';
+import { Datepicker } from 'flowbite-react';
+import { NewsContext } from '../Context/NewsContext';
 
 export default function SetDatePicker() {
-  const { handleNewsUpdate, fromDate, toDate } = useContext(NewsContext)
-  
-  const selectDate = fromDate === '' ? 'de' : 'ate'
-  const isAllDateSelect = fromDate !== '' && toDate !== ''
-  const splitDate = fromDate.split('-')
+  const { handleNewsUpdate, fromDate, toDate } = useContext(NewsContext);
+
+  const selectDate = fromDate === '' ? 'de' : 'ate';
+  const isAllDateSelect = fromDate !== '' && toDate !== '';
+  const splitDate = fromDate.split('-');
 
   return (
     <Datepicker
-      disabled={isAllDateSelect}
-      title={'Choose a Date'}
-      autoHide={true}
-      onSelectedDateChanged={(date) => handleNewsUpdate(date.toISOString(), selectDate)}
-      style={{textAlign: "center"}}
-      maxDate={new Date()}
+      disabled={ isAllDateSelect }
+      title="Choose a Date"
+      autoHide
+      onSelectedDateChanged={ (date) => handleNewsUpdate(date.toISOString(), selectDate) }
+      style={ { textAlign: 'center' } }
+      maxDate={ new Date() }
       minDate={
         fromDate !== ''
           ? new Date(+splitDate[2], +splitDate[0], +splitDate[1])
           : new Date(2017, 1, 1)
       }
     />
-  )
+  );
 }
