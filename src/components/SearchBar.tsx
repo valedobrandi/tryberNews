@@ -8,12 +8,12 @@ type SearchBarProps = {
 }
 
 export default function SearchBar({searchRef, setBtnTag}: SearchBarProps) {
-  const { handleDate } = useContext(NewsContext)
+  const { handleNewsUpdate } = useContext(NewsContext)
   const [search, setSearch] = useState("")
 
   
   const handleSearch = () => {
-    handleDate(search, "busca")
+    handleNewsUpdate(search, "busca")
     searchRef.current = `${search}`;
     setSearch("");
     setBtnTag(true)
@@ -36,7 +36,7 @@ export default function SearchBar({searchRef, setBtnTag}: SearchBarProps) {
       <Button
         onClick={handleSearch}
         size="sm" 
-        className="rounded-lg">
+        className="rounded-lg text-sm">
         Search
       </Button>
     </div>

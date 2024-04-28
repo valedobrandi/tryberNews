@@ -13,6 +13,7 @@ import {
 import { NewsContext } from "../Context/NewsContext";
 import BlogCard from "./BlogCard";
 import LoadingBar from "./LoadingBar";
+import { ControlledSelect } from "./ControlledSelect";
 
 
 
@@ -36,29 +37,32 @@ export function TabsWithIcon() {
 
   if (error) return <p>{error.message}</p>
   return (
-    <Tabs value="news">
-      <TabsHeader className="max-w-[700px] mx-auto">
-        {dataTab.map(({ label, value, icon }) => (
-          <Tab key={value} value={value}>
-            <div className="flex items-center gap-2">
-              {React.createElement(icon, { className: "w-5 h-5" })}
-              {label}
-            </div>
-          </Tab>
-        ))}
-      </TabsHeader>
-      <TabsBody>
-        {loading && <LoadingBar />}
-        {(dataNews && !loading) && (
-          dataTab.map(({desc, value}) => (
-            <TabPanel value={value} key={value}>
-              {desc && desc.map((data, index) => (
-                <BlogCard key={index} data={data} />
-              ))}
-            </TabPanel>
-          )
+    <>
+      <ControlledSelect />
+      <Tabs value="news">
+        <TabsHeader className="max-w-[700px] mx-auto">
+          {dataTab.map(({ label, value, icon }) => (
+            <Tab key={value} value={value}>
+              <div className="flex items-center gap-2">
+                {React.createElement(icon, { className: "w-5 h-5" })}
+                {label}
+              </div>
+            </Tab>
           ))}
-      </TabsBody>
-    </Tabs>
+        </TabsHeader>
+        <TabsBody>
+          {loading && <LoadingBar />}
+          {(dataNews && !loading) && (
+            dataTab.map(({ desc, value }) => (
+              <TabPanel value={value} key={value}>
+                {desc && desc.map((data, index) => (
+                  <BlogCard key={index} data={data} />
+                ))}
+              </TabPanel>
+            )
+            ))}
+        </TabsBody>
+      </Tabs>
+    </>
   );
 }

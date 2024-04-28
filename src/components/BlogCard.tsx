@@ -16,7 +16,7 @@ type BlogCardProps = {
 
 export default function BlogCard({ data }: BlogCardProps) {
   const {setStorage, store} = useContext(NewsContext)
-  const { titulo, imagens, data_publicacao, introducao, link, id } = data
+  const { titulo, imagens, data_publicacao, link, id } = data
   const img = imagens ? JSON.parse(imagens) : ""
 
   const isFavorite = store.find((fav) => fav.id === id)
@@ -44,9 +44,7 @@ export default function BlogCard({ data }: BlogCardProps) {
         <Typography variant="h4" color="blue-gray">
           {titulo}
         </Typography>
-        <Typography variant="lead" color="gray" className="mt-3 font-normal">
-          {introducao}
-        </Typography>
+
         <a href={link} className="font-medium text-lg
          text-blue-600 dark:text-blue-500 hover:underline">Read more</a>
       </CardBody>

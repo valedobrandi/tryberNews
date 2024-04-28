@@ -8,7 +8,7 @@ import { IoMdCloseCircle } from "react-icons/io";
 import SetDatePicker from './components/SetDatePicker';
 
 function App() {
-  const { error, fromDate, toDate, handleDate, isSearch} = useContext(NewsContext)
+  const { error, fromDate, toDate, handleNewsUpdate, isSearch} = useContext(NewsContext)
   const [btnTag, setBtnTag] = useState(false)
   const searchRef = useRef<string | null>(null)
 
@@ -16,7 +16,7 @@ function App() {
   const handleRemoveSearch = () => {
     setBtnTag(false)
     searchRef.current = null;
-    handleDate('', 'busca')
+    handleNewsUpdate('', 'busca')
   };
 
 
@@ -53,7 +53,7 @@ function App() {
           >
             <Button
             size='sm'
-              onClick={() => handleDate('', 'de')}
+              onClick={() => handleNewsUpdate('', 'de')}
               className="rounded-lg flex justify-center"
               color='blue'>
               {fromDate}
@@ -67,7 +67,7 @@ function App() {
           >
             <Button
             size='sm'
-                onClick={() => handleDate('', 'ate')}
+                onClick={() => handleNewsUpdate('', 'ate')}
               className="rounded-lg flex justify-center"
               color='blue'>
               {toDate}

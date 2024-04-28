@@ -8,10 +8,11 @@ type NewsContextProps = {
     loading: boolean;
     setStorage: (value: ItemsType[]) => void;
     store: ItemsType[];
-    handleDate: (date: string, dateRange: string) => void;
+    handleNewsUpdate: (date: string, dateRange: string) => void;
     toDate: string;
     fromDate: string;
     isSearch: string;
+    isQtd: string;
 }
 
 export const NewsContext = createContext({} as NewsContextProps);

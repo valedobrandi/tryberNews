@@ -33,7 +33,7 @@ export default function NewsProvider({ children }: NewsProviderType) {
     dataNews = dataNews.slice().sort((a, b) => Number(a.data_publicacao) - Number(b.data_publicacao))
   }
 
-  const handleDate = (input: string, key: string) => {
+  const handleNewsUpdate = (input: string, key: string) => {
     const updateState = { ...queryParams, [key]: input }
     const changeDateFormat = input.slice(0, 10).split("-")
     const setFormatDate = input === '' 
@@ -41,13 +41,14 @@ export default function NewsProvider({ children }: NewsProviderType) {
     :`${changeDateFormat[1]}-${changeDateFormat[2]}-${changeDateFormat[0]}`
 
     if (key === "busca") {return setQueryParams(updateState)}
-  
+    if (key === "qtd") {return setQueryParams(updateState)}
       setQueryParams({ ...queryParams, [key]: setFormatDate })
   };
 
   const toDate = queryParams.ate
   const fromDate = queryParams.de
   const isSearch = queryParams.busca
+  const isQtd = queryParams.qtd
   return (
     <NewsContext.Provider
       value={{
@@ -56,10 +57,11 @@ export default function NewsProvider({ children }: NewsProviderType) {
         loading,
         setStorage,
         store,
-        handleDate,
+        handleNewsUpdate,
         toDate,
         fromDate,
         isSearch,
+        isQtd,
       }}
     >
       {children}
