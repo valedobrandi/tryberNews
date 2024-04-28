@@ -39,7 +39,7 @@ function App() {
           >
             <Button
               size='sm'
-              className=''
+              className='text-sm'
               onClick={handleRemoveSearch}>
               {searchRef.current}
             </Button>
@@ -54,7 +54,7 @@ function App() {
             <Button
             size='sm'
               onClick={() => handleNewsUpdate('', 'de')}
-              className="rounded-lg flex justify-center"
+              className="rounded-lg flex justify-center text-sm"
               color='blue'>
               {fromDate}
             </Button>
@@ -68,7 +68,7 @@ function App() {
             <Button
             size='sm'
                 onClick={() => handleNewsUpdate('', 'ate')}
-              className="rounded-lg flex justify-center"
+              className="rounded-lg flex justify-center text-sm"
               color='blue'>
               {toDate}
             </Button>

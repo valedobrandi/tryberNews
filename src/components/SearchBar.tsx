@@ -22,7 +22,7 @@ export default function SearchBar({searchRef, setBtnTag}: SearchBarProps) {
 
 
   return (
-    <div className="items-center gap-x-2 flex justify-center">
+    <div className="items-center gap-x-2 flex justify-center mt-4">
       <div className="relative flex items-center gap-2 lg:w-[500px] w-[200px] ">
         <Input
           className="indent-10 min-w-9"
