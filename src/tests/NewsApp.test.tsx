@@ -94,4 +94,8 @@ test('Test if the search by text render correct', async () => {
   expect(screen.getByText('IPCA-15 é de 0,21% em abril')).toBeInTheDocument();
 
   await userEvent.click(screen.getByPlaceholderText('39855'));
+  expect(localStorage.getItem('favoriteNews')).toContain('39855');
+  const favBtns = screen.getAllByPlaceholderText('39855');
+  await userEvent.click(favBtns[0]);
+  expect(localStorage.getItem('favoriteNews')).not.toContain('39855');
 });
