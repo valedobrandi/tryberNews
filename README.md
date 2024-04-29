@@ -56,7 +56,7 @@
 ## Criação do Projeto
 
 O projeto foi criado em [Apr 23 2024] com o objetivo de [disponibilizar as notícias da API do IBGE].
-https://servicodados.ibge.gov.br/api/docs/noticias?versao=3
+<p>https://servicodados.ibge.gov.br/api/docs/noticias?versao=3<p>
 
 ## Principais Funcionalidades
 
