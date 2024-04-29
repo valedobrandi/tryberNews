@@ -11,6 +11,7 @@ export default function SetDatePicker() {
 
   return (
     <Datepicker
+      placeholder="Select Date"
       disabled={ isAllDateSelect }
       title="Choose a Date"
       autoHide

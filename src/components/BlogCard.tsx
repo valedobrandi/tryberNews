@@ -56,12 +56,13 @@ export default function BlogCard({ data }: BlogCardProps) {
       </CardBody>
       <CardFooter className="flex items-center justify-between">
         <div className="flex items-center -space-x-3">
-          <IconButton
+          <button
+            placeholder={ `${id}` }
             onClick={ handleFavorite }
             className="bg-transparent text-3xl"
           >
             {isFavorite ? '❤️️' : '🖤'}
-          </IconButton>
+          </button>
         </div>
         <Typography className="font-normal">
           published

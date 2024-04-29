@@ -6,11 +6,11 @@ import './index.css';
 import NewsProvider from './Provider/NewsProvider.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <ThemeProvider>
-      <NewsProvider>
-        <App />
-      </NewsProvider>
-    </ThemeProvider>
-  </React.StrictMode>,
+
+  <ThemeProvider>
+    <NewsProvider>
+      <App />
+    </NewsProvider>
+  </ThemeProvider>,
+
 );

@@ -42,7 +42,12 @@ export function TabsWithIcon() {
         ))}
       </TabsHeader>
       <TabsBody>
-        {error && <p>{error.message}</p>}
+        {error && (
+          <>
+            <p className="text-center mt-6 text-2xl">{error.message}</p>
+            <p className="text-center text-2xl text-red-600">Please Search Again</p>
+          </>
+        )}
         {loading && !error && <LoadingBar />}
         {dataNews
             && !error

@@ -1,8 +1,16 @@
-import { NewsType } from './news';
+import { ItemsType } from './news';
 
 export type UseFechType = {
-  data: NewsType | undefined;
-  error: Error;
-  loading: boolean;
-
+  data: {
+    count: number,
+    page: number,
+    totalPages: number,
+    nextPage: number,
+    previousPage: number,
+    showingFrom: number,
+    showingTo: number,
+    items: ItemsType[];
+  } | undefined,
+  error: Error,
+  loading: boolean,
 };

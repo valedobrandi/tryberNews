@@ -22,6 +22,7 @@ export default function SearchBar({ searchRef, setBtnTag }: SearchBarProps) {
     <div className="items-center gap-x-2 flex justify-center mt-4">
       <div className="relative flex items-center gap-2 lg:w-[500px] w-[200px] ">
         <Input
+          placeholder="search"
           className="indent-10 min-w-9"
           size="lg"
           value={ search }
@@ -30,13 +31,15 @@ export default function SearchBar({ searchRef, setBtnTag }: SearchBarProps) {
           crossOrigin={ undefined }
         />
       </div>
-      <Button
+      <button
         onClick={ handleSearch }
-        size="lg"
-        className="rounded-lg text-sm"
+        className="text-white bg-gray-800 hover:bg-gray-900
+        focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium
+         rounded-lg px-5 py-2 text-xl dark:bg-gray-800 dark:hover:bg-gray-700
+          dark:focus:ring-gray-700 dark:border-gray-700"
       >
         Search
-      </Button>
+      </button>
     </div>
   );
 }
