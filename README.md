@@ -5,7 +5,11 @@
 
   1. Para rodar, clone o repositório em https://github.com/valedobrandi/tryberNews.
   2. Instalar a aplicação com <i>npm install</i>
-  3. Rodar <i>npm run dev</i>
+  3. Rodar o comando <i>npm run dev</i>
+
+# Rodar os Tests:
+
+1. Rodar o comando <i>npm run test</i>
 
 # Deploy : http://newstrybeapp.surge.sh/
 
