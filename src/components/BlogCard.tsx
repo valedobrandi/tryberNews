@@ -4,7 +4,6 @@ import {
   CardBody,
   CardFooter,
   Typography,
-  IconButton,
 } from '@material-tailwind/react';
 import { useContext } from 'react';
 import { ItemsType } from '../types/news';

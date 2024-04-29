@@ -13,6 +13,7 @@ export default function SetDatePicker() {
     <Datepicker
       placeholder="Select Date"
       disabled={ isAllDateSelect }
+      showClearButton={ false }
       title="Choose a Date"
       autoHide
       onSelectedDateChanged={ (date) => handleNewsUpdate(date.toISOString(), selectDate) }

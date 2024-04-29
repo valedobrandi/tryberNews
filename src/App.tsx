@@ -26,10 +26,10 @@ function App() {
       <StickyNavbar searchRef={ searchRef } setBtnTag={ setBtnTag } />
       <div className="flex mt-6 gap-4 justify-center flex-wrap items-center">
         <SetDatePicker />
+        <ControlledSelect />
       </div>
       <div className="max-w-[700px] mx-auto h-20 pl-5 mt-3  lg:flex items-center">
         <div className="flex">
-          <ControlledSelect />
           {(isSearch !== '' && btnTag) && (
             <Badge
               content={

@@ -18,7 +18,7 @@ export function newsHandling(data: NewsType): ItemsType[] {
       );
 
       return {
-        id: id.toString(),
+        id,
         titulo,
         introducao,
         data_publicacao: date < 0 ? date * -1 : date,

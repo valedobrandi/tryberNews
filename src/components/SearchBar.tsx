@@ -1,4 +1,4 @@
-import { Button, Input } from '@material-tailwind/react';
+import { Input } from '@material-tailwind/react';
 import { useContext, useState } from 'react';
 import { NewsContext } from '../Context/NewsContext';
 

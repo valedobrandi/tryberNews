@@ -25,13 +25,13 @@ export function TabsWithIcon() {
       label: 'Favorite',
       value: 'Favorite',
       icon: HeartIcon,
-      desc: store,
+      desc: store || [],
     },
   ];
 
   return (
     <Tabs value="news">
-      <TabsHeader className="max-w-[700px] mx-auto">
+      <TabsHeader className="max-w-[700px] mx-auto mb-6">
         {dataTab.map(({ label, value, icon }) => (
           <Tab key={ value } value={ value }>
             <div className="flex items-center gap-2">
@@ -52,14 +52,17 @@ export function TabsWithIcon() {
         {dataNews
             && !error
             && !loading
-            && dataTab.map(({ desc, value }) => (
-              <TabPanel value={ value } key={ value }>
-                {desc
-                  && desc.map((data, index) => (
-                    <BlogCard key={ index } data={ data } />
-                  ))}
-              </TabPanel>
-            ))}
+            && dataTab.map(({ value }) => {
+              return (
+                <TabPanel value={ value } key={ value }>
+                  {value === 'news'
+                    ? dataNews
+                      .map((data) => <BlogCard data={ data } key={ value } />)
+                    : store
+                      .map((data) => <BlogCard data={ data } key={ value } />)}
+                </TabPanel>
+              );
+            })}
       </TabsBody>
     </Tabs>
   );

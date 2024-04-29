@@ -8,7 +8,6 @@ import App from '../App';
 import { buscaNews } from './mock/buscaNews';
 import { toDate } from './mock/toDate';
 import { fromDate } from './mock/fromDate';
-import BlogCard from '../components/BlogCard';
 
 localStorage.clear();
 
